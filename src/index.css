@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-primary-50: #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-200: #bfdbfe;
+  --color-primary-300: #93c5fd;
+  --color-primary-400: #60a5fa;
+  --color-primary-500: #3b82f6;
+  --color-primary-600: #2563eb;
+  --color-primary-700: #1d4ed8;
+  --color-primary-800: #1e40af;
+  --color-primary-900: #1e3a8a;
+  --color-primary-950: #172554;
+}
+
+@layer base {
+  :root {
+    --card-bg: #ffffff;
+    --text-color: #0f172a;
+  }
+  .dark {
+    --card-bg: #0f172a;
+    --text-color: #f8fafc;
+  }
+  body {
+    @apply bg-slate-50 text-slate-900 font-sans transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100;
+  }
+}
+
+@utility card {
+  @apply bg-white rounded-xl shadow-sm border border-slate-200 p-6 transition-all duration-300 dark:bg-slate-900 dark:border-slate-800 dark:shadow-none;
+}
+
+@utility btn {
+  @apply px-4 py-2 rounded-lg font-semibold transition-all duration-200 disabled:opacity-50 active:scale-95 inline-flex items-center justify-center;
+}
+
+@utility btn-primary {
+  @apply btn bg-primary-600 text-white hover:bg-primary-700 shadow-md shadow-primary-200 dark:shadow-none;
+}
+
+@utility btn-secondary {
+  @apply btn bg-white text-slate-700 border border-slate-300 hover:bg-slate-50 dark:bg-slate-800 dark:text-slate-200 dark:border-slate-700 dark:hover:bg-slate-700;
+}
+
+@utility btn-danger {
+  @apply btn bg-red-600 text-white hover:bg-red-700 shadow-md shadow-red-200 dark:shadow-none;
+}
+
+@utility input {
+  @apply w-full px-4 py-2 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all dark:bg-slate-800 dark:border-slate-700 dark:text-white dark:focus:ring-primary-600;
+}
+
+/* Custom scrollbar for dark mode */
+@layer utilities {
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-slate-200 rounded-full dark:bg-slate-800;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-slate-300 dark:bg-slate-700;
+  }
+}

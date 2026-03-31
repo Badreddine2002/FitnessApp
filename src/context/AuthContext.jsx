@@ -1,5 +1,5 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
-import axios from 'axios';
+import mockApi from '../services/mockApi';
 
 const AuthContext = createContext();
 
@@ -10,18 +10,14 @@ export const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         if (token) {
-            axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-            // In a real app, you'd verify the token with the backend here
             const storedUser = JSON.parse(localStorage.getItem('user'));
             if (storedUser) setUser(storedUser);
-        } else {
-            delete axios.defaults.headers.common['Authorization'];
         }
         setLoading(false);
     }, [token]);
 
     const login = async (username, password) => {
-        const response = await axios.post('/api/auth/login', { username, password });
+        const response = await mockApi.login(username, password);
         const { token, user } = response.data;
         localStorage.setItem('token', token);
         localStorage.setItem('user', JSON.stringify(user));
@@ -30,7 +26,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     const register = async (username, password) => {
-        await axios.post('/api/auth/register', { username, password });
+        await mockApi.register(username, password);
     };
 
     const logout = () => {

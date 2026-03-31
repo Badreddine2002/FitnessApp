@@ -1,9 +1,9 @@
-# FitnessTracker - Workout Tracking Application
+# FitnessTracker - Workout Tracking Application (Frontend Only)
 
-A full-stack web application built with React and Node.js to help users track their muscle training workouts.
+A full-stack web application built with React, transformed into a pure frontend application using `localStorage` for data persistence.
 
 ## Features
-- **User Authentication**: Secure register and login system.
+- **User Authentication**: Mock register and login system using `localStorage`.
 - **Dashboard**: Overview of your training status and recent exercises.
 - **Exercise Management**: Create and manage your list of exercises.
 - **Workout Logging**: Log sessions with multiple sets (reps & weight).
@@ -11,8 +11,8 @@ A full-stack web application built with React and Node.js to help users track th
 - **Responsive Design**: Mobile-friendly UI using Vanilla CSS.
 
 ## Tech Stack
-- **Frontend**: React (Vite), Context API, Axios, Recharts, Lucide-React.
-- **Backend**: Node.js, Express, SQLite, JWT, BcryptJS.
+- **Frontend**: React (Vite), Context API, Axios (replaced by mockApi), Recharts, Lucide-React.
+- **Data Persistence**: Browser `localStorage`.
 
 ## Getting Started
 
@@ -23,32 +23,19 @@ A full-stack web application built with React and Node.js to help users track th
 
 1. **Clone the repository** (or extract the files).
 
-2. **Setup the Backend**:
+2. **Install dependencies**:
    ```bash
-   cd backend
    npm install
-   node server.js
    ```
-   The backend will run on `http://localhost:5000`.
 
-3. **Setup the Frontend**:
+3. **Run the application**:
    ```bash
-   cd frontend
-   npm install
    npm run dev
    ```
-   The frontend will run on `http://localhost:3000`.
+   The application will run on `http://localhost:3000`.
 
 4. **Access the App**:
    Open your browser and navigate to `http://localhost:3000`.
 
-## API Documentation
-- `POST /api/auth/register`: Register a new user.
-- `POST /api/auth/login`: Login and receive a JWT.
-- `GET /api/exercises`: Get all exercises for the logged-in user.
-- `POST /api/exercises`: Create a new exercise.
-- `GET /api/sessions/:exerciseId`: Get all sessions for an exercise.
-- `POST /api/sessions`: Create a new session.
-- `POST /api/sets`: Add a set to a session.
-- `GET /api/progress/:exerciseId`: Get progress data for charts.
-- `GET /api/records/:exerciseId`: Get personal records for an exercise.
+## How it works
+This version of the app does not require a backend server or database. All your data (users, exercises, sessions, and sets) is stored locally in your browser's `localStorage`. This means your data will persist on your device but won't be synced across different browsers or devices.
